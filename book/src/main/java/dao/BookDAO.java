@@ -137,7 +137,6 @@ public class BookDAO {
 			pstmt.setInt(3, updateDTO.getCode());
 			
 			updateRow = pstmt.executeUpdate();
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -160,7 +159,6 @@ public class BookDAO {
 			pstmt.setInt(1, code);
 			
 			deleteRow = pstmt.executeUpdate();
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -187,7 +185,6 @@ public class BookDAO {
 			pstmt.setString(5, insertDTO.getDescription());
 			
 			insertRow = pstmt.executeUpdate();
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
