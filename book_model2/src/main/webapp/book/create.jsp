@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
 <h3>Create</h3>
-<form method="post" action="create_pro.jsp">
+<form method="post" action="/create.do">
   <div class="row mb-3">
     <label for="code" class="col-sm-2 col-form-label">Code</label>
     <div class="col-sm-10">
@@ -35,7 +35,7 @@
     </div>
   </div>
   <button type="submit" class="btn btn-secondary">추가</button>
-  <button type="button" class="btn btn-primary">목록</button>
+  <a class="btn btn-primary" href="/list.do?keyword=${keyword}">목록</a>
 </form>
 <script src="/js/create.js"></script>
 <%@ include file="../include/footer.jsp"%>

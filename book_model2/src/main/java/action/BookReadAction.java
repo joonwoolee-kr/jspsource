@@ -1,7 +1,5 @@
 package action;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -18,12 +16,14 @@ public class BookReadAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// 1.
 		int code = Integer.parseInt(request.getParameter("code"));
+		String keyword = request.getParameter("keyword");
 
 		// 2. service 호출
 		BookService service = new BookServiceImpl();
 		BookDTO dto = service.read(code);
 		
 		request.setAttribute("dto", dto);
+		request.setAttribute("keyword", keyword);
 
 		return new ActionForward(path, false);
 	}

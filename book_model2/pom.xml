@@ -35,5 +35,11 @@
 			<artifactId>ojdbc11</artifactId>
 			<version>23.5.0.24.07</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl-api -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
 	</dependencies>
 </project>

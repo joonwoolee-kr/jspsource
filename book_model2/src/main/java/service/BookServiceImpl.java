@@ -8,8 +8,8 @@ public class BookServiceImpl implements BookService {
 	private BookDAO dao = new BookDAO();
 
 	@Override
-	public java.util.List<BookDTO> List() {
-		return dao.getList();
+	public java.util.List<BookDTO> List(String keyword) {
+		return dao.getList(keyword);
 	}
 
 	@Override
