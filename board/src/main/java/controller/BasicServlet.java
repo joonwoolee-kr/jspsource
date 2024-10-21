@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
 import action.ActionForward;
+import action.BoardListAction;
+import action.BoardReadAction;
+import action.BoardUpdateAction;
 
 
 /**
@@ -42,6 +45,16 @@ public class BasicServlet extends HttpServlet {
 		// System.out.println("contextPath " + contextPath);
 
 		Action action = null;
+		
+		if (cmd.equals("/list.do")) { // 목록
+			action = new BoardListAction("/board/list.jsp");
+		} else if(cmd.equals("/read.do")) { // 상세 조회
+			action = new BoardReadAction("/board/read.jsp");
+		} else if(cmd.equals("/modify.do")) { // 수정화면
+			action = new BoardReadAction("/board/modify.jsp");
+		} else if(cmd.equals("/update.do")) { // 업데이트
+			action = new BoardUpdateAction("/read.do"); // 수정 성공 후 상세조회로 이동
+		}
 
 
 		ActionForward af = null;
