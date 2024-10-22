@@ -29,7 +29,7 @@ document.querySelector("tbody").addEventListener("click", (e) => {
 	console.log(actionForm.innerHTML);
 	
 	// action: /read.do 변경
-	actionForm.action = "/read.do";
+	actionForm.action = "/cntupdate.do";
 	// actionForm submit
 	actionForm.submit();
 	

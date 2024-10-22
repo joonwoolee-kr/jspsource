@@ -9,6 +9,7 @@ public interface BoardService {
 	List<BoardDTO> listAll();
 	BoardDTO getRow(int bno);
 	boolean update(BoardDTO updateDto);
-	boolean delete(int bno);
+	boolean delete(BoardDTO deleteDto);
 	boolean create(BoardDTO insertDto);
+	boolean hitUpdate(int bno);
 }

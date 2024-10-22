@@ -25,8 +25,11 @@
 						<c:forEach var="dto" items="${list}">
 							<tr>
 								<td>${dto.bno}</td>
-								<td><a href="${dto.bno}"
-									class="text-decoration-none text-reset">${dto.title}</a></td>
+								<td><c:if test="${dto.reLev!=0}">
+										<c:forEach begin="0" end="${dto.reLev*1}">
+								&nbsp;
+								</c:forEach>
+									</c:if> <a href="${dto.bno}" class="text-decoration-none text-reset">${dto.title}</a></td>
 								<td>${dto.regdate}</td>
 								<td>${dto.name}</td>
 								<td>${dto.readcnt}</td>
@@ -35,15 +38,18 @@
 					</tbody>
 				</table>
 			</div>
-			<nav aria-label="Page navigation example">
-				<ul class="pagination justify-content-center">
-					<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-					<li class="page-item"><a class="page-link" href="#">1</a></li>
-					<li class="page-item"><a class="page-link" href="#">2</a></li>
-					<li class="page-item"><a class="page-link" href="#">3</a></li>
-					<li class="page-item"><a class="page-link" href="#">Next</a></li>
-				</ul>
-			</nav>
+			<div class="row">
+				<div class="col-sm-12 col-md-12">
+					<ul class="pagination justify-content-center">
+						<li class="paginate_button page-item previous"><a
+							class="page-link" href="">Previous</a></li>
+						<li class="paginate_button page-item "><a class="page-link"
+							href="">1</a></li>
+						<li class="paginate_button page-item next"><a
+							class="page-link" href="">Next</a></li>
+					</ul>
+				</div>
+			</div>
 			<%-- 페이지 나누기 --%>
 			<form action="" method="get" id="actionForm">
 				<input type="hidden" name="bno" value="" />

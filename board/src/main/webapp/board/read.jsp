@@ -1,3 +1,5 @@
+<%@page import="java.net.URLEncoder"%>
+<%@page import="dto.BoardDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
@@ -19,8 +21,15 @@
 		</div>
 		<div class="form-group">
 			<label for="attach">첨부파일</label>
+			<%
+			BoardDTO dto = (BoardDTO) request.getAttribute("dto");
+			String encodeFileName = "";
+			if (dto.getAttach() != null) {
+				encodeFileName = URLEncoder.encode(dto.getAttach(), "utf-8");
+			}
+			%>
 			<div>
-				<a href="">${dto.attach}</a>
+				<a href="/board/download.jsp?fileName=<%=encodeFileName%>">${dto.attach}</a>
 			</div>
 		</div>
 		<div class="form-group">
@@ -28,7 +37,11 @@
 				id="name" name="name" readonly>
 		</div>
 
-		<button type="button" class="btn btn-primary">수정</button>
+		<button type="button" class="btn btn-info">수정</button>
+		<!-- 
+		<button type="button" class="btn btn-secondary">답변</button>
+		 -->
+		<a class="btn btn-secondary" href="/board/reply.jsp">답변</a>
 		<button type="button" class="btn btn-success">목록</button>
 	</form>
 </div>
