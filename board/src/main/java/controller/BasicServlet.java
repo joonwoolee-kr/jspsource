@@ -17,6 +17,7 @@ import action.BoardDeleteAction;
 import action.BoardListAction;
 import action.BoardReadAction;
 import action.BoardReadCntAction;
+import action.BoardReplyAction;
 import action.BoardUpdateAction;
 
 
@@ -38,36 +39,36 @@ public class BasicServlet extends HttpServlet {
 		// 한글처리
 		request.setCharacterEncoding("utf-8");
 
-		// 톰캣서버의 path 수정하지 않았다면
-		// RequestURI = /프로젝트명/경로명 => /moedel2/login.do
-		// ContextPath = /프로젝트명 => /moedel2
-		// "/model2/login.do".substring(7) 경로명만 추출 => /login.do
 		String requestUri = request.getRequestURI(); // /login.do
 		String contextPath = request.getContextPath();
 		String cmd = requestUri.substring(contextPath.length()); // /login.do
 
-		// syso
-		// System.out.println("requestUri " + requestUri);
-		// System.out.println("contextPath " + contextPath);
+		// http://localhost:8090/list.do
 
 		Action action = null;
 		
 		if (cmd.equals("/list.do")) { // 목록
 			action = new BoardListAction("/board/list.jsp");
-		} else if(cmd.equals("/read.do")) { // 상세 조회
+		}else if(cmd.equals("/read.do")) { // 상세조회
 			action = new BoardReadAction("/board/read.jsp");
-		} else if(cmd.equals("/modify.do")) { // 수정화면
+		}else if(cmd.equals("/modify.do")) { // 수정화면
 			action = new BoardReadAction("/board/modify.jsp");
-		} else if(cmd.equals("/update.do")) { // 업데이트
-			action = new BoardUpdateAction("/read.do"); // 수정 성공 후 상세조회로 이동
-		} else if(cmd.equals("/delete.do")) { // 삭제
+		}else if(cmd.equals("/update.do")) { // 업데이트 실제 수행
+			// 수정 성공 후 상세조회로 이동
+			action = new BoardUpdateAction("/read.do");
+		}else if(cmd.equals("/delete.do")) { // 삭제 수행			
 			action = new BoardDeleteAction("/list.do");
-		} else if(cmd.equals("/create.do")) { // 작성
+		}else if(cmd.equals("/create.do")) { // 삽입 수행			
 			action = new BoardCreateAction("/list.do");
-		} else if(cmd.equals("/cntupdate.do")) { // 조회수 증가
+		}else if(cmd.equals("/cntupdate.do")) { // 조회수 증가 수행			
 			action = new BoardReadCntAction("/read.do");
+		}else if(cmd.equals("/replyView.do")) { // 답변 폼 보여주기
+			action = new BoardReadAction("/board/reply.jsp");
+		}else if(cmd.equals("/reply.do")) { // 답변 등록
+			action = new BoardReplyAction("/list.do");
 		}
-
+		
+		
 
 		ActionForward af = null;
 
