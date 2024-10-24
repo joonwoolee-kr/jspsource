@@ -29,6 +29,10 @@
 			<label for="attach">첨부파일</label>			
 			<div><a href="">${dto.attach}</a></div>	
 		</div>
+		<input type="hidden" name="page" value="${searchDTO.page}"/>
+		<input type="hidden" name="amount" value="${searchDTO.amount}"/>
+		<input type="hidden" name="criteria" value="${searchDTO.criteria}"/>
+		<input type="hidden" name="keyword" value="${searchDTO.keyword}"/>
 		<button type="submit" class="btn btn-primary">수정</button>
 		<button type="button" class="btn btn-danger">삭제</button>
 		<button type="button" class="btn btn-success">목록</button>
@@ -37,6 +41,10 @@
 <%-- 페이지 나누기  --%>
 <form action="" method="get" id="actionForm">
 	<input type="hidden" name="bno" value="${dto.bno}"/>
+	<input type="hidden" name="page" value="${searchDTO.page}"/>
+	<input type="hidden" name="amount" value="${searchDTO.amount}"/>
+	<input type="hidden" name="criteria" value="${searchDTO.criteria}"/>
+	<input type="hidden" name="keyword" value="${searchDTO.keyword}"/>
 </form>
 <script src="/js/custom/read.js"></script>
 <%@ include file="../include/footer.jsp"%>

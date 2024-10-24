@@ -19,5 +19,5 @@ public interface BoardService {
 	//댓글
 	boolean reply(BoardDTO replyDto);	
 	
-	int getTotalRows();
+	int getTotalRows(SearchDTO searchDto);
 }

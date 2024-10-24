@@ -46,8 +46,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public int getTotalRows() {		
-		return dao.getTotalRows();
+	public int getTotalRows(SearchDTO searchDto) {		
+		return dao.getTotalRows(searchDto);
 	}
 
 }

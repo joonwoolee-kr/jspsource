@@ -35,7 +35,7 @@ public class BoardListAction implements Action {
 		BoardService service = new BoardServiceImpl();		
 		List<BoardDTO> list = service.listAll(searchDTO);
 		
-		int total = service.getTotalRows();
+		int total = service.getTotalRows(searchDTO);
 		PageDTO pageDTO = new PageDTO(searchDTO, total);
 		
 		// list => board 테이블 내용

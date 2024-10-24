@@ -296,14 +296,21 @@ public class BoardDAO {
 	}
 	
 	// 전체 게시물 개수 리턴 메소드
-	public int getTotalRows(){
+	public int getTotalRows(SearchDTO searchDto){
 		int total = 0;
 		
 		try {
-			
 			con = getConnection();
-			String sql = "SELECT count(*) FROM board";
-			pstmt = con.prepareStatement(sql);
+			
+			if(!searchDto.getCriteria().isBlank()) {
+				String sql = "SELECT count(*) FROM board WHERE " + searchDto.getCriteria() + " LIKE ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, "%" + searchDto.getKeyword() + "%");
+			} else {
+				String sql = "SELECT count(*) FROM board";
+				pstmt = con.prepareStatement(sql);
+			}
+			
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				total = rs.getInt(1);
